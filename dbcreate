@@ -1,0 +1,21 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY, -- Otomatik artan INTEGER
+    adi VARCHAR(255) NOT NULL,
+    soyadi VARCHAR(255) NOT NULL,
+    mezuniyet_yili INT NOT NULL
+);
+
+CREATE TABLE locations (
+    student_id INT PRIMARY KEY, -- INTEGER ID
+    city VARCHAR(255) NOT NULL,
+    latitude DOUBLE PRECISION NOT NULL,
+    longitude DOUBLE PRECISION NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
+);
+
